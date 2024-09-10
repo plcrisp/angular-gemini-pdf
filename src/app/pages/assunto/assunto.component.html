@@ -1,0 +1,84 @@
+<app-navbar></app-navbar>
+
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 80%; width: 80%;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="searchModalLabel">Faça sua pesquisa referente aos documentos!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <app-gemini [modal]="true" [pdfUrl]="pdfUrls"></app-gemini>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+        <h3 class="poppins-black">DETERIORAÇÃO DE ALIMENTOS</h3>
+
+        <img src="../../../assets/images/deterioration3.jpg" alt="deterioration">
+
+        <p class="roboto">A deterioração de alimentos é um processo natural que ocorre devido a mudanças químicas, físicas e microbiológicas nos produtos alimentícios. Esse fenômeno resulta na perda de qualidade, segurança e valor nutritivo dos alimentos, tornando-os inadequados para consumo. Compreender os fatores que contribuem para a deterioração é essencial para desenvolver estratégias eficazes de preservação e prolongar a vida útil dos produtos.</p>
+    
+        <h2 class="poppins-bold">Documentos de interesse: </h2>
+        <div class="pdfs" *ngFor="let pdf of pdfList">
+            <div class="pdf-preview">
+                <input type="checkbox" [(ngModel)]="pdf.selected" class="pdf-checkbox" (change)="onCheckboxChange(pdf)">
+                <span class="pdf-name roboto-bold">{{ pdf.name }}</span>
+                <fa-icon style="color: rgb(29,36,65); cursor: pointer;" [icon]="faDownload" (click)="downloadPdf(pdf.ref)"></fa-icon>
+            </div>
+        </div>
+        <button (click)="toggleViewPdf()" class="view-pdf-button">
+            Visualizar todos os PDFs
+        </button>
+
+        
+    </div>
+</div>
+
+<button class="search-button" data-bs-toggle="modal" data-bs-target="#searchModal">
+    <fa-icon [icon]="faSearch"></fa-icon>
+</button>
+
+<div class="options" *ngIf="viewPdf">
+        <div class="navbar">
+            <ul class="nav-list">
+                <li *ngFor="let questao of pdfList; let i = index">
+                  <button (click)="selectPdf(i);" [class.active]="id === i">{{ i + 1 }}</button>
+                </li>
+            </ul>
+        </div>
+</div>
+<ngx-extended-pdf-viewer
+        *ngIf="viewPdf"
+        [src]="pdfUrl"
+        useBrowserLocale="true"
+        style="display: block; height: 90vh; width: 70%; margin: 0 auto; margin-bottom: 300px;"
+        zoom="70%"
+        [textLayer]="true"
+        [showToolbar]="true"
+        [showSidebarButton]="false"
+        [showFindButton]="true"
+        [showPagingButtons]="true"
+        [showDrawEditor]="false"
+        [showStampEditor]="false"
+        [showTextEditor]="false"
+        [showZoomButtons]="false"
+        [showPresentationModeButton]="false"
+        [showOpenFileButton]="false"
+        [showPrintButton]="false"
+        [showDownloadButton]="true"
+        [showHighlightEditor]="false"
+        [showSecondaryToolbarButton]="true"
+        [showRotateCwButton]="false"
+        [showRotateCcwButton]="false"
+        [showHandToolButton]="false"
+        [showScrollingButton]="false"
+        [showSpreadButton]="false"
+        [showPropertiesButton]="false"
+></ngx-extended-pdf-viewer>

@@ -1,0 +1,170 @@
+.container{
+  padding: 0px;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+  .content{
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+
+    h3{
+      font-size: 40px;
+    }
+
+    h2{
+      margin-top: 40px;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    img{
+      width: 500px;
+      border-radius: 10px;
+      margin-top: 30px;
+    }
+
+    p{
+      text-align: justify;
+      margin-top: 30px;
+      text-indent: 30px;
+    }
+  }
+
+  .pdfs{
+      margin: 10px 0px 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 40%;
+      background-color: #f9f9f9;
+    
+    .pdf-name {
+      font-size: 16px;
+      margin-right: 10px;
+    }
+
+    .pdf-checkbox {
+      position: relative;
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      cursor: pointer;
+      appearance: none;
+      outline: none;
+      border: 2px solid rgb(29,36,65);
+      border-radius: 4px;
+      background-color: #fff;
+      transition: background-color 0.3s, border-color 0.3s;
+      margin-bottom: -4px;
+    }
+    
+    .pdf-checkbox:checked {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+    
+    .pdf-checkbox:checked::after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 1px;
+      width: 6px;
+      height: 12px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+  }
+
+  .view-pdf-button {
+    display: flex;
+    justify-content: left;
+    margin-left: 20px;
+    background-color: rgb(29,36,65);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+  }
+  
+  .view-pdf-button:hover {
+    background-color: #0056b3;
+  }
+
+  
+
+}
+
+.search-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgb(29,36,65);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 20px;
+  transition: background-color 0.3s;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+.navbar {
+    margin: 0 auto;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    padding: 10px;
+    border: 1px solid rgb(29,36,65);
+    max-width: 16%;
+    border-radius: 5px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(29,36,65) #ffffff;
+    
+
+    .nav-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: space-between;
+      padding-right: 5px;
+
+      li {
+          margin-left: 6px;
+          
+        button {
+          border: 1px solid rgb(29,36,65);
+          border-radius: 5px;
+          font-size: 24px;
+          padding: 0px 10px 0px 10px;
+          background-color: #fff;
+          color: rgb(29,36,65);
+        }
+
+        button.active {
+          background-color: rgb(29,36,65); /* Cor para destacar a questão ativa */
+          color: white;
+        }
+      }
+
+    }
+  }

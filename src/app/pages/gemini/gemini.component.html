@@ -1,0 +1,26 @@
+<app-navbar *ngIf="!modal"></app-navbar>
+
+<div class="chat-container roboto-regular">
+    <header class="chat-header">
+      <h4 class="poppins-black">Faça sua pergunta</h4>
+  
+    </header>
+  
+    <main class="chat-history">
+      <ng-container *ngFor="let item of chatHistory">
+        <div class="messages" [ngClass]="{'blue': item.from === 'user', 'green': item.from === 'bot'}">
+          <fa-icon *ngIf="item.from === 'user'" [icon]="faUser"></fa-icon>
+          <fa-icon *ngIf="item.from === 'bot'" [icon]="faKeyboard"></fa-icon>
+          <span class="responses" [innerHTML]="formatText(item.message)"></span>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="loading">
+        <app-skeleton></app-skeleton>
+      </ng-container>
+    </main>
+    <footer class="chat-input">
+      <input type="text" id="message-input" (keyup.enter)="sendData(modal)" placeholder="Escreva sua mensagem..." [(ngModel)]="prompt" [disabled]="loading" autocomplete="off"/>
+      <button id="send-button" (click)="sendData(modal)"  [disabled]="loading">Enviar</button>
+    </footer>
+  
+</div>
